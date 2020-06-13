@@ -40,7 +40,7 @@ public class Controller {
         return ResponseEntity.ok(pessoaService.retornaPessoasCadastradas(id));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("pessoas/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void excluirPessoa(@PathVariable String id) {
         pessoaService.excluirPessoa(id);
