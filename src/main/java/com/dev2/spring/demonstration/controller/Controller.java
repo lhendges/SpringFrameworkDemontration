@@ -27,4 +27,9 @@ public class Controller {
         return ResponseEntity.ok(pessoaService.getResponse(requestDto));
     }
 
+    @GetMapping("/exception")
+    public void throwException() {
+        throw new RuntimeException("TESTE");
+    }
+
 }
