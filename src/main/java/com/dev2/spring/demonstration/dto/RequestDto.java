@@ -15,4 +15,6 @@ public class RequestDto {
     String nome;
 
     String curso;
+
+    Integer semestre;
 }

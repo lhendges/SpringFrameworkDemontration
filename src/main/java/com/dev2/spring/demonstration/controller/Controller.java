@@ -1,6 +1,7 @@
 package com.dev2.spring.demonstration.controller;
 
 import com.dev2.spring.demonstration.dto.RequestDto;
+import com.dev2.spring.demonstration.dto.ResponseDto;
 import com.dev2.spring.demonstration.service.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,8 +24,26 @@ public class Controller {
     }
 
     @PostMapping("/cadastro/pessoa")
-    public ResponseEntity<String> cadastrarPessoa(@RequestBody @Valid RequestDto requestDto) {
-        return ResponseEntity.ok(pessoaService.getResponse(requestDto));
+    @ResponseStatus(HttpStatus.CREATED)
+    public void cadastrarPessoa(@RequestBody @Valid RequestDto requestDto) {
+        pessoaService.registraPessoa(requestDto);
+    }
+
+    @GetMapping("/pessoas")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity buscaPessoasCadastradas() {
+        return ResponseEntity.ok(pessoaService.retornaPessoasCadastradas());
+    }
+
+    @GetMapping("/pessoas/{id}")
+    public ResponseEntity<ResponseDto> buscaPessoa(@PathVariable String id) {
+        return ResponseEntity.ok(pessoaService.retornaPessoasCadastradas(id));
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void excluirPessoa(@PathVariable String id) {
+        pessoaService.excluirPessoa(id);
     }
 
 }

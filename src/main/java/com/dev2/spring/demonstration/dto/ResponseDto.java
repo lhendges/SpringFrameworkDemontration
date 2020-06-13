@@ -13,6 +13,8 @@ public class ResponseDto {
 
     private Boolean aluno;
 
+    private Integer semestre;
+
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("É aluno? " + aluno);
