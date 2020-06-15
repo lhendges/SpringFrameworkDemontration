@@ -46,9 +46,4 @@ public class Controller {
         pessoaService.excluirPessoa(id);
     }
 
-    @GetMapping("/exception")
-    public void throwException() {
-        throw new RuntimeException("TESTE");
-    }
-
 }

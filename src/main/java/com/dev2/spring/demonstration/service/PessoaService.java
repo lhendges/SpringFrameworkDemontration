@@ -39,7 +39,11 @@ public class PessoaService {
     }
 
     public void excluirPessoa(String id) {
-        pessoasCadastradas.removeIf(pessoa -> id.equals(pessoa.getId()));
-    }
+        Optional<Pessoa> pessoaEncontrada = pessoasCadastradas.stream().filter(pessoa -> id.equals(pessoa.getId())).findFirst();
+        if (pessoaEncontrada.isPresent()) {
+            pessoasCadastradas.remove(pessoaEncontrada);
+        }
 
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+    }
 }

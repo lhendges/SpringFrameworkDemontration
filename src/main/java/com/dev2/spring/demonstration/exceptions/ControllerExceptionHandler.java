@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class ControllerExceptionHandler {
 
-    @ExceptionHandler({RuntimeException.class})
+    @ExceptionHandler({Exception.class})
     public ResponseEntity<ExceptionDefaultResponseDto> handleRuntimeExceptions(RuntimeException exception) {
         ExceptionDefaultResponseDto dto = ExceptionDefaultResponseDto.builder()
                 .handlerMessage("Ocorreu um erro e ele foi tratado pelo ExceptionHandler")
