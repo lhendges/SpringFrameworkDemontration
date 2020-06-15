@@ -10,8 +10,8 @@ import javax.validation.constraints.Size;
 @Builder
 public class RequestDto {
 
-    @NotBlank(message = "O nome deve ser informado!")
-    @Size(max = 10, message = "O tamanho máximo do nome deve ser 10 caracteres")
+    @NotBlank
+    @Size(max = 10)
     String nome;
 
     String curso;
