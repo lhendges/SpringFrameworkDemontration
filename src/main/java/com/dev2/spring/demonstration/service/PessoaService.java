@@ -41,9 +41,9 @@ public class PessoaService {
     public void excluirPessoa(String id) {
         Optional<Pessoa> pessoaEncontrada = pessoasCadastradas.stream().filter(pessoa -> id.equals(pessoa.getId())).findFirst();
         if (pessoaEncontrada.isPresent()) {
-            pessoasCadastradas.remove(pessoaEncontrada);
+            pessoasCadastradas.remove(pessoaEncontrada.get());
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
-
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
 }
